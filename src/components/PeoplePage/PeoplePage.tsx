@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import { Loader } from '../Loader';
 import { Person } from '../../types';
 import { getPeople } from '../../api';
@@ -11,6 +11,7 @@ export const PeoplePage: React.FC = () => {
   const { slug } = useParams<{ slug?: string }>();
   const [activeSlug, setActiveSlug] = useState<string | null>(slug || null);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getPeople()
@@ -83,6 +84,7 @@ export const PeoplePage: React.FC = () => {
                 key={person.slug}
                 data-cy="person"
                 onClick={() => {
+                  navigate(`/people/${person.slug}`)
                   setActiveSlug(person.slug);
                 }}
                 className={
