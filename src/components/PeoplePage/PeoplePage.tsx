@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Loader } from '../Loader';
 import { Person } from '../../types';
 import { getPeople } from '../../api';
@@ -84,8 +84,8 @@ export const PeoplePage: React.FC = () => {
                 key={person.slug}
                 data-cy="person"
                 onClick={() => {
-                  navigate(`/people/${person.slug}`)
-                  setActiveSlug(person.slug);
+                  navigate(`/people/${person.slug}`);
+                  // setActiveSlug(person.slug);
                 }}
                 className={
                   activeSlug === person.slug ? 'has-background-warning' : ''
